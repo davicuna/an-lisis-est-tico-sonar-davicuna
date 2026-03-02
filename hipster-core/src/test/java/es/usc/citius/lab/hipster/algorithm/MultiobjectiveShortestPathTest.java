@@ -84,6 +84,7 @@ public class MultiobjectiveShortestPathTest {
     }
     @Test
     public void test(){
+
         // Create a multiobjective graph
         final HipsterDirectedGraph<String, Cost> graph =
                 GraphBuilder.create()
@@ -122,8 +123,13 @@ public class MultiobjectiveShortestPathTest {
         // Create our custom binary operation:
         BinaryOperation<Cost> bf = new BinaryOperation<Cost>(f, identity, max);
 
-        System.out.println(Hipster.createMultiobjectiveLS(GraphSearchProblem.startingFrom("v1").in(graph).useGenericCosts(bf).build()).search("v6"));
 
-        // TODO; Add solution verification
+        SearchResult resultado = Hipster.createMultiobjectiveLS(GraphSearchProblem.startingFrom("v1").in(graph).useGenericCosts(bf).build()).search("v6");
+
+        assertNotNull("El resultado no debería ser nulo", resultado);
+        assertFalse("Debería haber encontrado rutas óptimas", resultado.getOptimalPaths().isEmpty());
+
+        System.out.println(resultado);
+
     }
 }

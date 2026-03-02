@@ -66,7 +66,7 @@ public class AnnealingSearch<A, S, N extends HeuristicNode<A, S, Double, N>> ext
 	private SuccessorFinder<A, S, N> successorFinder;
 	// expander to find all the successors of a given node.
 	private NodeExpander<A, S, N> nodeExpander;
-	private static final Random randIndGen = new Random();
+	private static final SecureRandom randIndGen = new SecureRandom();
 	public AnnealingSearch(N initialNode, NodeExpander<A, S, N> nodeExpander, Double alpha, Double minTemp,
 			AcceptanceProbability acceptanceProbability, SuccessorFinder<A, S, N> successorFinder) {
 		if (initialNode == null) {

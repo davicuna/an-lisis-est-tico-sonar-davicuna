@@ -59,7 +59,8 @@ public class HashTableHipsterGraphTest {
 
     @Test
     public void testRemoveEdge() throws Exception {
-
+        graph.removeEdge("v1", "v2");
+        assertFalse("El arco entre v1 y v2 no debería existir", graph.containsEdge("v1", "v2"));
     }
 
     @Test
